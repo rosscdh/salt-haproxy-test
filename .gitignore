@@ -1,2 +1,2 @@
-/salt/master/*
-!/salt/master/.gitkeep
+/salt/srv/formulas/*
+!/salt/srv/formulas/.gitkeep

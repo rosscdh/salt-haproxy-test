@@ -1,5 +1,5 @@
 haproxy:
   pkg.installed: []
-  service.running:
-    - require:
-      - pkg: haproxy
+  # service.running:
+  #   - require:
+  #     - pkg: haproxy
