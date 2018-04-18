@@ -12,13 +12,13 @@ services:
       - ./salt/master:/var/cache/salt/master
 
   haproxy:
-    image: "haproxy:alpine"
-    entrypoint: sh /minion-bootstrap.sh
+    build:
+      context: ./haproxy/
     ports:
      - "80:80"
      - "1936:1936"
     volumes:
-      - ./minion-bootstrap.sh:/minion-bootstrap.sh
+      # - ./minion-bootstrap.sh:/minion-bootstrap.sh
       - ./salt/minion:/etc/salt/minion
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
 

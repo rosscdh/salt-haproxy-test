@@ -11,6 +11,12 @@ Salt HAProxy Services Docker
 
 
 ```
+docker-compose exec haproxy service salt-minion start
+docker-compose exec service_a service salt-minion start
+docker-compose exec service_a_1 service salt-minion start
+docker-compose exec service_b service salt-minion start
+docker-compose exec service_b_1 service salt-minion start
+
 docker-compose exec salt salt-key --list all
 
 get unaccepted key
@@ -20,4 +26,8 @@ docker-compose exec salt salt-key -a cb49e1ee6d8d
 or, accept all
 
 docker-compose exec salt salt-key -A
+```
+
+```
+docker-compose exec salt salt '*' test.ping
 ```

@@ -1,4 +1,4 @@
-FROM nginx:mainline
+FROM haproxy:latest
 
 ADD ./bootstrap-salt.sh /
 RUN sh bootstrap-salt.sh
@@ -11,4 +11,4 @@ RUN if [ -f /etc/salt/minion_id ]; then rm /etc/salt/minion_id; fi
 
 RUN service salt-minion start
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
