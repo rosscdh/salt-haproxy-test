@@ -1,6 +1,7 @@
 version: '3'
 services:
   salt:
+    hostname: salt-master
     build:
       context: ./docker-salt-master/
     ports:
@@ -9,9 +10,11 @@ services:
      - "444:443"
      - "8010:8000"
     volumes:
-      - ./salt/master:/var/cache/salt/master
+      - ./salt/master.d:/etc/salt/master.d
+      - ./salt/srv:/srv/salt
 
   haproxy:
+    hostname: haproxy
     build:
       context: ./haproxy/
     ports:
@@ -23,6 +26,7 @@ services:
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
 
   service_a:
+    hostname: service-a
     build:
       context: ./web/
     ports:
@@ -33,6 +37,7 @@ services:
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
   service_a_1:
+    hostname: service-a-1
     build:
       context: ./web/
     ports:
@@ -43,6 +48,7 @@ services:
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
   service_b:
+    hostname: service-b
     build:
       context: ./web/
     ports:
@@ -53,6 +59,7 @@ services:
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
   service_b_1:
+    hostname: service-b-1
     build:
       context: ./web/
     ports:

@@ -3,7 +3,7 @@ FROM nginx:mainline
 ADD ./bootstrap-salt.sh /
 RUN sh bootstrap-salt.sh
 
-CMD ["service", "salt-minion", "stop"]
+RUN service salt-minion stop
 
 RUN if [ -f /etc/salt/pki/minion/minion.pub ]; then rm /etc/salt/pki/minion/minion.pub; fi
 RUN if [ -f /etc/salt/pki/minion/minion.pem ]; then rm /etc/salt/pki/minion/minion.pem; fi
