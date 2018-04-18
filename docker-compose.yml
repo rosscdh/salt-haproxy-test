@@ -13,6 +13,7 @@ services:
     image: "haproxy:alpine"
     ports:
      - "80:80"
+     - "1936:1936"
     volumes:
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
 
