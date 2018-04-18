@@ -23,7 +23,6 @@ services:
      - "80:80"
      - "1936:1936"
     volumes:
-      # - ./minion-bootstrap.sh:/minion-bootstrap.sh
       - ./salt/minion:/etc/salt/minion
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
 
@@ -34,7 +33,6 @@ services:
     ports:
      - "8001:80"
     volumes:
-      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
@@ -45,7 +43,6 @@ services:
     ports:
      - "8003:80"
     volumes:
-      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
@@ -56,7 +53,6 @@ services:
     ports:
      - "8002:80"
     volumes:
-      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
@@ -67,6 +63,5 @@ services:
     ports:
      - "8004:80"
     volumes:
-      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
       - ./web/service-a.html:/usr/share/nginx/html/index.html
