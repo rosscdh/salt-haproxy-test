@@ -23,41 +23,41 @@ services:
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
 
   service_a:
-    image: "nginx:alpine"
-    entrypoint: sh /minion-bootstrap.sh
+    build:
+      context: ./web/
     ports:
      - "8001:80"
     volumes:
-      - ./minion-bootstrap.sh:/minion-bootstrap.sh
+      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
   service_a_1:
-    image: "nginx:alpine"
-    entrypoint: sh /minion-bootstrap.sh
+    build:
+      context: ./web/
     ports:
      - "8003:80"
     volumes:
-      - ./minion-bootstrap.sh:/minion-bootstrap.sh
+      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
       - ./web/service-a.html:/usr/share/nginx/html/index.html
 
   service_b:
-    image: "nginx:alpine"
-    entrypoint: sh /minion-bootstrap.sh
+    build:
+      context: ./web/
     ports:
      - "8002:80"
     volumes:
-      - ./minion-bootstrap.sh:/minion-bootstrap.sh
+      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
-      - ./web/service-b.html:/usr/share/nginx/html/index.html
+      - ./web/service-a.html:/usr/share/nginx/html/index.html
 
   service_b_1:
-    image: "nginx:alpine"
-    entrypoint: sh /minion-bootstrap.sh
+    build:
+      context: ./web/
     ports:
      - "8004:80"
     volumes:
-      - ./minion-bootstrap.sh:/minion-bootstrap.sh
+      #- ./bootstrap-salt.sh:/bootstrap-salt.sh
       - ./salt/minion:/etc/salt/minion
-      - ./web/service-b.html:/usr/share/nginx/html/index.html
+      - ./web/service-a.html:/usr/share/nginx/html/index.html
