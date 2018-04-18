@@ -1,0 +1,45 @@
+version: '3'
+services:
+  salt:
+    build:
+      context: ./docker-salt-master/
+    ports:
+     - "4505:4505"
+     - "4506:4506"
+     - "444:443"
+     - "8010:8000"
+
+  haproxy:
+    image: "haproxy:alpine"
+    ports:
+     - "80:80"
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+
+  service_a:
+    image: "nginx:alpine"
+    ports:
+     - "8001:80"
+    volumes:
+      - ./web/service-a.html:/usr/share/nginx/html/index.html
+
+  service_a_1:
+    image: "nginx:alpine"
+    ports:
+     - "8003:80"
+    volumes:
+      - ./web/service-a.html:/usr/share/nginx/html/index.html
+
+  service_b:
+    image: "nginx:alpine"
+    ports:
+     - "8002:80"
+    volumes:
+      - ./web/service-b.html:/usr/share/nginx/html/index.html
+
+  service_b_1:
+    image: "nginx:alpine"
+    ports:
+     - "8004:80"
+    volumes:
+      - ./web/service-b.html:/usr/share/nginx/html/index.html
