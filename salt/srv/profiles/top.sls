@@ -1,4 +1,6 @@
 base:
+  '*':
+    - common
 
   'service-*':
     - nginx

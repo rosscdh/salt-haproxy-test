@@ -11,7 +11,8 @@ services:
      - "8010:8000"
     volumes:
       - ./salt/master.d:/etc/salt/master.d
-      - ./salt/srv:/srv/salt
+      - ./salt/profiles:/srv/salt
+      - ./salt/pillars:/srv/pillar
 
   haproxy:
     hostname: haproxy

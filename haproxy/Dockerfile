@@ -11,4 +11,4 @@ RUN if [ -f /etc/salt/minion_id ]; then rm /etc/salt/minion_id; fi
 
 RUN service salt-minion start
 
-CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
+CMD ["service", "salt-minion", "restart", "&&", "haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
