@@ -3,6 +3,9 @@ FROM haproxy:latest
 ADD ./bootstrap-salt.sh /
 RUN sh bootstrap-salt.sh
 
+RUN easy_install pip
+RUN pip install haproxyctl
+
 RUN service salt-minion stop
 
 RUN if [ -f /etc/salt/pki/minion/minion.pub ]; then rm /etc/salt/pki/minion/minion.pub; fi
