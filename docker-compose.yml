@@ -10,6 +10,8 @@ services:
      - "444:443"
      - "8010:8000"
     volumes:
+      - ./salt/pki/master/master.pem:/etc/salt/pki/master/master.pem
+      - ./salt/pki/master/master.pub:/etc/salt/pki/master/master.pub
       - ./salt/master.d:/etc/salt/master.d
       - ./salt/srv/profiles:/srv/salt
       - ./salt/srv/pillars:/srv/pillar

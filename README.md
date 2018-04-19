@@ -11,6 +11,7 @@ Salt HAProxy Services Docker
 
 
 ```
+docker-compose up haproxy service_a service_a_1 service_b service_b_1
 docker-compose exec haproxy service salt-minion start
 docker-compose exec service_a service salt-minion start
 docker-compose exec service_a_1 service salt-minion start
