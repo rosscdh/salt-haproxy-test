@@ -3,6 +3,9 @@ FROM haproxy:latest
 ADD ./bootstrap-salt.sh /
 RUN sh bootstrap-salt.sh
 
+ADD ./entrypoint.sh /
+RUN chmod a+x /entrypoint.sh
+
 RUN easy_install pip
 RUN pip install haproxyctl
 
@@ -14,4 +17,5 @@ RUN if [ -f /etc/salt/minion_id ]; then rm /etc/salt/minion_id; fi
 
 RUN service salt-minion start
 
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]

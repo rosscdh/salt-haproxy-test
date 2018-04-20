@@ -16,6 +16,7 @@ services:
       - ./salt/srv/profiles:/srv/salt
       - ./salt/srv/pillars:/srv/pillar
       - ./salt/srv/formulas:/srv/formulas
+      - ./salt/runners/dglhaproxy.py:/usr/lib/python2.7/dist-packages/salt/runners/dglhaproxy.py
 
   haproxy:
     hostname: haproxy
@@ -23,6 +24,7 @@ services:
       context: ./haproxy/
     ports:
      - "80:80"
+     - "81:81"
      - "1936:1936"
     volumes:
       - ./salt/minion:/etc/salt/minion
@@ -56,7 +58,7 @@ services:
      - "8002:80"
     volumes:
       - ./salt/minion:/etc/salt/minion
-      - ./web/service-a.html:/usr/share/nginx/html/index.html
+      - ./web/service-b.html:/usr/share/nginx/html/index.html
 
   service_b_1:
     hostname: service-b-1
@@ -66,4 +68,4 @@ services:
      - "8004:80"
     volumes:
       - ./salt/minion:/etc/salt/minion
-      - ./web/service-a.html:/usr/share/nginx/html/index.html
+      - ./web/service-b.html:/usr/share/nginx/html/index.html
